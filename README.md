@@ -246,6 +246,8 @@ At spcification of client_secrets.json mention as, /var/www/catalog/catalog/clie
 ```
 * To check errors in our file,``` sudo tail -f /var/log/apache2/error.log```
 
+* Now, you can open [web-broser](http://3.81.217.0.xip.io) or as (http://ec2-3-81-217-0.compute-1.amazonaws.com)
+
 * I completed this project with the help of mentors and udacity videos.
 
 
