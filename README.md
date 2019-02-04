@@ -85,7 +85,7 @@ ssh -i linux_server_31_31_2019.pem -p 2200 ubuntu@IP address
       chmod 700 /home/grader/.ssh
       chmod 644 /home/grader/.ssh/authorized_keys
       vi /etc/ssh/sshd_config
-      There at authentication edit as permit root login no and save and exit(ecs+:wq)
+      There at authentication edit as permit root login no and pubkey authentication yessave and exit(ecs+:wq)
 ```
 **Step 9.** Now restart the service ``` sudo service ssh restart```.
 
@@ -94,7 +94,7 @@ ssh -i linux_server_31_31_2019.pem -p 2200 ubuntu@IP address
 ### Set the time zone for grader
 To,set time zone for grader the command as follows
 ```
-     sudo dpkg-reconfigure tzdate
+     sudo dpkg-reconfigure tzdata
 ```
 ### Installing of Apache and postgresql software
 **Step 1.** Now istall apache software at grader
