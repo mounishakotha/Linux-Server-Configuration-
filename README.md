@@ -120,18 +120,23 @@ To,set time zone for grader the command as follows
 **Step 12.** Now grant all the permissions to catlog ``` grant all on schema public to catlog;```.
 **Step 13.** Now exit from the database.
 
-### Installation of git
+## Installation of git
 **Step 1.** Now install git ```sydo apt-get install git```.
+
 **Step 2.** Now change the directory to www ```cd /var/www```.
+
 **Step 3.** Now clone our git project here ```sudo git clone url_link(https://github.com/mounishakotha/catalog.git)```.
-**Step 4.** Now change the owner permissions ```sudo chown -R grader:grader catalog```
-**Step 5.** Now change the name of main file name ```sudo mv projectflask.py __init__py```
+
+**Step 4.** Now change the owner permissions ```sudo chown -R grader:grader catalog```.
+
+**Step 5.** Now change the name of main file name ```sudo mv projectflask.py __init__py```.
+
 **Step 6.** Now in python files change the database engine to postgres.
 ```
     engine = create_engine('postgresql://catlog:catlog@localhost/catlog')
 ```
 
-## Creation of google OAuth credentials.The steps are as follows:
+### Creation of google OAuth credentials.The steps are as follows:
 
 1) Go to your app's page in the [Google APIs Console](https://console.developers.google.com/apis)
 2) Choose Credentials from the menu on the left.
