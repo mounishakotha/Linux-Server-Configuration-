@@ -151,7 +151,7 @@ To,set time zone for grader the command as follows
 
 1) Go to your app's page in the [Google APIs Console](https://console.developers.google.com/apis)
 2) Choose Credentials from the menu on the left.
-3) Create an OAuth Client ID. The OAuth client ID's are **amazonaws.com** and **xip.io**.
+3) Create an OAuth Client ID.
 4) This will require you to configure the consent screen, with the same choices as in the video.
 5) When you're presented with a list of application types, choose Web application.
 6) You can then set the authorized JavaScript origins, http://IPAddress.xip.io/login,http://IPAddress.xip.io/callback,http://IPAddress.xip.io/gconnect.
@@ -159,3 +159,92 @@ To,set time zone for grader the command as follows
 
 * In login.html change the old client ID with new client ID
 * Also, change the old client_secrets.json file with new client_secrets.json
+
+### Configure and enable new virtual host
+```
+<VirtualHost *:80>
+    ServerName 3.81.217.0.xip.io
+    ServerAlias ec2-3-81-217-0.compute-1.amazonaws.com
+    ServerAdmin ubuntu@54.210.140.47
+    WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/catalog/venv/lib/python3.6/site-packages
+    WSGIProcessGroup catalog
+    WSGIScriptAlias / /var/www/catalog/catalog.wsgi
+    <Directory /var/www/catalog/catalog/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    Alias /static /var/www/catalog/catalog/static
+    <Directory /var/www/catalog/catalog/static/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    LogLevel warn
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+* Now enable virtual host ```sudo a2ensite catalog```
+### Setup the flask application
+* Now, create a file at /var/www/catalog/ with name **catalog.wsgi**.
+```
+import sys
+  import logging
+  logging.basicConfig(stream=sys.stderr)
+  sys.path.insert(0, "/var/www/catalog/")
+  from catalog import app as application
+  application.secret_key = 'supersecretkey'
+```
+
+* Now reload and restart apache.
+```
+      sudo service apache2 reload
+      sudo service apache2 restart
+```
+
+* From var/www/catalog/catalog create a virtual environment.
+```
+sudo virtualenv -p python venv
+```
+
+* Now change the ownership permissions ```sudo chown -R grader:grader venv```.
+
+* Now activate virtual environment ```. venv/bin/activate```.
+
+### Installations in virtual environment
+```
+    sudo apt-get install pip3
+    pip3 install flask
+    pip3 install sqlalchemy
+    pip3 install httplib2
+    pip3 install requests
+    pip3 install --upgrade oauth2client
+    pip3 install psycopg2-binary
+    sudo apt-get install libpq-dev
+```
+* If not installed with this queries or got a error that no module found, install with this command **sudo -H pip3 install flask**.
+
+* Now enable site ```sudo a2ensite catalog``` and give the authentication details and again **reload** apache.
+
+* Now in __init__.py file do these following changes.
+```
+At database import statement , add from catalog.database import *
+At place of xrange use range
+At spcification of client_secrets.json mention as, /var/www/catalog/catalog/client_secrets.json
+```
+* Now run database file, sample items file.
+``` 
+    python database.py
+    python cheeseitems.py
+```
+* Again reload and restart the apache.
+* Security Updates and package updates use these commands.
+```
+   sudo apt-get update
+   sudo apt-get upgrade
+   sudo apt-get dist-upgrade
+```
+* To check errors in our file,``` sudo tail -f /var/log/apache2/error.log```
+
+* I completed this project with the help of mentors and udacity videos.
+
+
