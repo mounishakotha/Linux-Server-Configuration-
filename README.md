@@ -4,7 +4,7 @@ This project is a part of **Udacity Nanodegree Full Stack.**
 This project explains how to secure and set up a Linux distribution on a virtual machine, install and configure a web and database server to host a web application. 
 
 - The virtual private server is [Amazon EC2](https://console.aws.amazon.com/).
-- The web application is my [Item Catalog project](https://github.com/mounishakotha/Item-Catlog) created earlier in this Nanodegree program.
+- The web application is my [Item Catalog project](https://github.com/mounishakotha/catalog.git) created earlier in this Nanodegree program.
 - The database server is [PostgreSQL](https://www.postgresql.org/).
 
 ## Process for connecting to Amazon EC2:
@@ -119,3 +119,24 @@ To,set time zone for grader the command as follows
 **Step 11.** Now revoke all the schemas ```revoke all on schema public from public;```.
 **Step 12.** Now grant all the permissions to catlog ``` grant all on schema public to catlog;```.
 **Step 13.** Now exit from the database.
+
+### Installation of git
+**Step 1.** Now install git ```sydo apt-get install git```.
+**Step 2.** Now change the directory to www ```cd /var/www```.
+**Step 3.** Now clone our git project here ```sudo git clone url_link(https://github.com/mounishakotha/catalog.git)```.
+**Step 4.** Now change the owner permissions ```sudo chown -R grader:grader catalog```
+**Step 5.** Now change the name of main file name ```sudo mv projectflask.py __init__py```
+**Step 6.** Now in python files change the database engine to postgres.
+```
+    engine = create_engine('postgresql://catlog:catlog@localhost/catlog')
+```
+
+## Creation of google OAuth credentials.The steps are as follows:
+
+1) Go to your app's page in the [Google APIs Console](https://console.developers.google.com/apis)
+2) Choose Credentials from the menu on the left.
+3) Create an OAuth Client ID. The OAuth client ID's are **amazonaws.com** and **xip.io**.
+4) This will require you to configure the consent screen, with the same choices as in the video.
+5) When you're presented with a list of application types, choose Web application.
+6) You can then set the authorized JavaScript origins, with the same settings as in the video.
+7) You will then be able to get the client ID and client secret.
