@@ -105,10 +105,10 @@ To,set time zone for grader the command as follows
 ```
            sudo apt-get install libapache2-mod-wsgi-py3
 ```
-       Now, enable wsgi ```sudo a2mod wsgi```
+   Now, enable wsgi ```sudo a2enmod wsgi```
 **Step 3.** To check that apache has installed successfully or not, Open web browser and type your **IP Address**.
 
-**Step 4.** After enable of wsgi install some libraries ```sudo apt-get install libpq-dev python-dev```.
+**Step 4.** After enable of wsgi install some libraries of python development ```sudo apt-get install libpq-dev python-dev```.
 
 **Step 5.** Now, install postgresql ``` sudo apt-get install postgresql postgresql-contrib```.
 
@@ -117,17 +117,17 @@ To,set time zone for grader the command as follows
     sudo su - postgres
     psql
 ```
-**Step 7.** After entering to psql create a user, ```create user catlog with password catlog;```.
+**Step 7.** After entering to psql create a user, ```create user catlog with password 'catlog';```.
 
 **Step 8.** Now alter the user, ```alter user catlog createdb;```.
 
-**Step 9.** Create a database, ```create database catlog;```.
+**Step 9.** Create a database, ```create database catlog with owner catlog\c ;```.
 
 **Step 10.** Now change to catlog database ```\c catlog```.
 
 **Step 11.** Now revoke all the schemas ```revoke all on schema public from public;```.
 
-**Step 12.** Now grant all the permissions to catlog ``` grant all on schema public to catlog;```.
+**Step 12.** Now grant all the public schemas to catlog ``` grant all on schema public to catlog;```.
 
 **Step 13.** Now exit from the database.
 
