@@ -66,21 +66,21 @@ ssh -i linux_server_31_31_2019.pem -p 2200 ubuntu@IP address
          
 **Step 3.** To verify the grader as sudo permission ```su -grader and password: grader```
 
-**Step 4.** Now, give SSH key-pair for grader
+**Step 4.** Now, give SSH key-pair for grader.
      Cofigure keypairs for gader
      Create .ssh folder by ```mkdir /home/grader/.ssh```
      
-**Step 5.** Change it to grader ```su grader password:grader```
+**Step 5.** Change it to grader ```su grader password:grader```.
            ``` sudo -cp /home/ubuntu/.ssh/authorized_keys /home/grader/.ssh/authorized_keys```
            
-**Step 6.** Now change ownership ``` chown grader.grader /home/grader/.ssh```
+**Step 6.** Now change ownership ``` chown grader.grader /home/grader/.ssh```.
 
-**Step 7.** Now add grader to sudogroup
+**Step 7.** Now add grader to sudogroup.
 ```
              sudo su
              usermod -aG sudo grader
 ```
-**Step 8.** Change permissions tp .ssh folder
+**Step 8.** Change permissions tp .ssh folder.
 ```
       chmod 700 /home/grader/.ssh
       chmod 644 /home/grader/.ssh/authorized_keys
@@ -88,7 +88,9 @@ ssh -i linux_server_31_31_2019.pem -p 2200 ubuntu@IP address
       There at authentication edit as permit root login no and save and exit(ecs+:wq)
 ```
 **Step 9.** Now restart the service ``` sudo service ssh restart```.
-**Step 10.** After restart open the server with grader ```ssh -i filename.pem grader@IPaddress```
+
+**Step 10.** After restart open the server with grader ```ssh -i filename.pem grader@IPaddress```.
+
 ### Set the time zone for grader
 To,set time zone for grader the command as follows
 ```
