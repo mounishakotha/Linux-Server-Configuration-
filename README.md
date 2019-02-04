@@ -140,9 +140,9 @@ To,set time zone for grader the command as follows
 
 **Step 4.** Now change the owner permissions ```sudo chown -R grader:grader catalog```.
 
-**Step 5.** Now change the name of main file name ```sudo mv projectflask.py __init__py```.
+**Step 5.** Now change the name of main file name ```sudo mv projectflask.py __init__.py```.
 
-**Step 6.** Now in python files change the database engine to postgres.
+**Step 6.** Now in python files change the database sqllite engine to postgres engine.
 ```
     engine = create_engine('postgresql://catlog:catlog@localhost/catlog')
 ```
@@ -154,5 +154,8 @@ To,set time zone for grader the command as follows
 3) Create an OAuth Client ID. The OAuth client ID's are **amazonaws.com** and **xip.io**.
 4) This will require you to configure the consent screen, with the same choices as in the video.
 5) When you're presented with a list of application types, choose Web application.
-6) You can then set the authorized JavaScript origins, with the same settings as in the video.
+6) You can then set the authorized JavaScript origins, http://IPAddress.xip.io/login,http://IPAddress.xip.io/callback,http://IPAddress.xip.io/gconnect.
 7) You will then be able to get the client ID and client secret.
+
+* In login.html change the old client ID with new client ID
+* Also, change the old client_secrets.json file with new client_secrets.json
