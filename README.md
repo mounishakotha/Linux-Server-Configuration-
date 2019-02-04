@@ -20,6 +20,7 @@ This project explains how to secure and set up a Linux distribution on a virtual
 - Now, click on launch wizard-1 and click on **Inbound**.
 - In Inbound, click on edit and add 3 rules i.e,add port SSh 2200, Http port 80, NTP port 123 and save. 
 
+**To use privatekey** [link](https://github.com/mounishakotha/Linux-Server-Configuration-/blob/master/Private%20key%20file)
  #### Public IP Address : 3.81.217.0
  #### Accessable Port : 2200
  
